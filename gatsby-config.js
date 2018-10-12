@@ -36,7 +36,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    'gatsby-plugin-glamor',
     `gatsby-plugin-sharp`,
     'gatsby-image',
     {
@@ -65,6 +64,6 @@ module.exports = {
       options: {
         pathToConfigModule: 'src/utils/typography',
       },
-    },
+    }
   ],
 }

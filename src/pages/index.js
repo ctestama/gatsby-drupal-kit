@@ -2,43 +2,38 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import gray from "gray-percentage"
 import Img from "gatsby-image"
-
+import Grid from '@material-ui/core/Grid';
 import Layout from "../components/layouts/default"
 import Container from "../components/common/container"
 import Teaser from "../components/content/teaser"
 import Featured from "../components/content/featured"
-import { rhythm } from "../utils/typography"
-import constants from "../utils/constants"
-import queries from "../utils/queries"
+
 
 const IndexPage = ({ data }) => (
   
   <Layout data={data}>
-    <Container>
-      {data.featuredArticle.edges.map(({ node }) => (
-
-      <Featured
+    {data.featuredArticle.edges.map(({ node }) => (
+    <Featured
+      key={node.nid}
+      image={node.relationships.field_image.localFile.childImageSharp.fluid} title={node.title}
+      path={node.path.alias}
+      node={node}
+      content={node.body.value}
+    />
+    ))}
+          <Grid container spacing={16}>
+    {data.latestArticles.edges.map(({ node }) => (
+      <Grid item sm={4} md={2} xs={16}>
+      <Teaser
         key={node.nid}
         image={node.relationships.field_image.localFile.childImageSharp.fluid} title={node.title}
         path={node.path.alias}
         node={node}
         content={node.body.value}
       />
-
-      ))}
-      {data.latestArticles.edges.map(({ node }) => (
-
-        <Teaser
-          key={node.nid}
-          image={node.relationships.field_image.localFile.childImageSharp.fluid} title={node.title}
-          path={node.path.alias}
-          node={node}
-          content={node.body.value}
-        />
-
-      ))}
-
-    </Container>
+      </Grid>
+    ))}
+    </Grid>
   </Layout>
 )
 

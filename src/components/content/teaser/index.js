@@ -5,11 +5,12 @@ import NodeInfo from "../../content/node-info";
 import Container from "../../common/container";
 import { rhythm } from "../../../utils/typography"
 import { randomBytes } from "crypto";
-
+import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 class Teaser extends React.Component {
   render() {
     return (
-      <Container className={styles.teaser} paddingBottom={0} paddingTop={rhythm(1 / 2)}>
+      <Card>
         <div className={styles.imageWrapper}>
           <Img
             fluid={
@@ -25,7 +26,7 @@ class Teaser extends React.Component {
         <div>
           {this.props.content.replace(/(<([^>]+)>)/ig, "").substring(0, 250) + "..."}
         </div>
-      </Container>
+      </Card>
     )
   }
 }

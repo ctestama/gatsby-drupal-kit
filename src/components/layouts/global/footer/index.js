@@ -29,7 +29,11 @@ class FooterLinks extends React.Component {
             <div className={styles.footerLinks}>
               <ul>
                 {this.props.items &&
-                  this.props.items.map(ing => <li key={ing.node.path.alias}><a href={ing.node.path.alias}> {ing.node.title}</a></li>)}
+                  this.props.items.map( ing =>  
+                    <li key={ing.node.path.alias}>
+                      <a href={ing.node.path.alias}> {ing.node.title}</a>
+                    </li>
+                  )}
               </ul>
             </div>
             <br />
